@@ -1,0 +1,38 @@
+Actúa como un Arquitecto de Software y Diseñador Instruccional experto en Inteligencia Artificial. Tu tarea es generar la estructura completa de documentación y directrices para mi proyecto académico llamado: "EA1 — Desarrollo de un Dashboard básico".
+IMPORTANTE: Estos archivos no son para que yo los lea paso a paso, sino que servirán como INSTRUCCIONES para que posteriormente otro Agente de IA Autónomo ejecute el proyecto por mí. Por lo tanto, el tono de los documentos debe ser de "órdenes e instrucciones directas para una IA", indicando qué comandos correr, qué verificar y qué documentar.
+Por favor, crea físicamente en mi espacio de trabajo los siguientes 7 archivos con su contenido completo en español:
+1. ARCHIVO: `INSTRUCCIONES_AGENTE.md`
+- Propósito: El "briefing" general para el agente.
+- Contenido requerido: 
+  - Rol del agente: Ayudar a un estudiante de Ingeniería Mecatrónica a construir y documentar el proyecto desde cero.
+  - Objetivo: Crear una API REST en Flask y un Dashboard en Dash que la consuma.
+  - El plan de 5 fases (Entorno, API, Dashboard, Integración, Entrega).
+  - Reglas operativas: El agente debe documentar todo paso a paso en un archivo `BITACORA.md`, no saltarse fases sin verificar, y tomar capturas de pantalla de los avances en una carpeta `capturas/`.
+  - El "Definition of Done" (criterios de aceptación globales).
+2. ARCHIVO: `fase_1_entorno.md`
+- Propósito: Instrucciones para configurar Python.
+- Contenido requerido: Instruir al agente para que verifique la versión de Python, cree un entorno virtual llamado `venv`, lo active, y ejecute `pip install -r requirements.txt`. Debe pedirle al agente que verifique la instalación con `pip list` y actualice la Bitácora.
+3. ARCHIVO: `fase_2_api.md`
+- Propósito: Instrucciones para desarrollar el backend.
+- Contenido requerido: Instruir al agente a crear un archivo `sensores.json` con datos simulados y un script `API.py` en Flask. La API debe tener 5 endpoints (GET general, GET por ID, POST, PUT, DELETE) con validación de datos. El agente debe arrancar la API y probarla localmente con comandos `curl`, guardando capturas.
+4. ARCHIVO: `fase_3_dashboard.md`
+- Propósito: Instrucciones para el frontend interactivo.
+- Contenido requerido: Instruir al agente a crear `Dashboard.py` usando la librería Dash. El dashboard debe consumir la API de Flask cada 2 segundos. Debe tener: un gráfico de líneas en tiempo real, dropdowns para filtrar, un slider y 3 tarjetas indicadoras (mínimo, máximo, promedio). El agente debe probar que renderice bien en `http://127.0.0.1:8050`.
+5. ARCHIVO: `fase_4_integracion.md`
+- Propósito: Pruebas del sistema End-to-End.
+- Contenido requerido: Instrucciones para que el agente arranque la API y el Dashboard al mismo tiempo en segundo plano. El agente debe hacer un POST a la API y verificar que el Dashboard se actualice automáticamente sin necesidad de recargar la página.
+6. ARCHIVO: `fase_5_entrega.md`
+- Propósito: Cierre y empaquetado del proyecto.
+- Contenido requerido: Instrucciones para generar un `README.md` final para el usuario, revisar que la `BITACORA.md` tenga todas las horas y comandos registrados, detener todos los procesos en segundo plano y asegurar que la carpeta esté limpia y lista para entregar.
+7. ARCHIVO: `requirements.txt`
+- Propósito: Dependencias exactas del sistema.
+- Contenido requerido (escribe esto exactamente):
+flask>=3.0.0
+dash>=2.18.0
+plotly>=5.24.0
+pandas>=2.2.0
+requests>=2.32.0
+Reglas de formato:
+- Utiliza Markdown avanzado (encabezados claros, bloques de código, tablas de ser necesario).
+- Asegúrate de incluir los comandos de terminal exactos (para Windows y Unix) que el futuro agente deberá ejecutar.
+- No me expliques cómo lo vas a hacer, simplemente procede a crear los 7 archivos ahora mismo.

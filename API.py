@@ -9,11 +9,11 @@ Esta API expone endpoints HTTP para gestionar datos de sensores
 almacenados en un archivo JSON (sensores.json).
 
 Endpoints:
-  GET    /sensors/             -> Lista todos los sensores
-  GET    /sensors/<sensor_id>  -> Devuelve un sensor por su id
-  POST   /sensors/             -> Crea un nuevo sensor
-  PUT    /sensors/<sensor_id>  -> Actualiza un sensor existente
-  DELETE /sensors/<sensor_id>  -> Elimina un sensor
+  GET    /sensors/                      -> Lista todos los sensores
+  GET    /sensors/by-sensor/<sensor_id>  -> Filtra registros por sensor_id
+  POST   /sensors/                      -> Crea un nuevo registro
+  PUT    /sensors/<id>                   -> Actualiza un registro por su id unico
+  DELETE /sensors/<id>                   -> Elimina un registro por su id unico
 
 Validaciones implementadas:
   - 'type' debe ser uno de: "temperatura", "presion", "velocidad"
@@ -145,12 +145,14 @@ def listar_sensores():
     return jsonify(sensores), 200
 
 
-@app.route("/sensors/<int:sensor_id>", methods=["GET"])
+# Endpoint GET para filtrar registros por sensor_id (agrupador logico)
+# Ruta separada /by-sensor/ para evitar conflicto con PUT/DELETE que usan /sensors/<id>
+@app.route("/sensors/by-sensor/<int:sensor_id>", methods=["GET"])
 def obtener_sensor(sensor_id):
-    """GET /sensors/<id> -> Devuelve los registros de un sensor_id."""
+    """GET /sensors/by-sensor/<sensor_id> -> Devuelve los registros de un sensor_id."""
     coincidencias = [s for s in sensores if s["sensor_id"] == sensor_id]
     if not coincidencias:
-        return jsonify({"error": f"No existe sensor con id {sensor_id}."}), 404
+        return jsonify({"error": f"No existe sensor con sensor_id {sensor_id}."}), 404
     return jsonify(coincidencias), 200
 
 
